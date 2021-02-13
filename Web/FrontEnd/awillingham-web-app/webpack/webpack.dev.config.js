@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path');
 
 module.exports = {
@@ -5,7 +6,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, '../../../wwwroot/js/bundles'),
+    path: path.join(__dirname, '../../../../wwwroot/js/bundles'),
   },
   module: {
     rules: [
@@ -18,5 +19,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    modules: [path.resolve('./src'), 'node_modules']
   }
 };
