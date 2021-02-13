@@ -2,3 +2,4 @@
 obj/*
 bin/*
 Web/awillingham-web-app/node_modules
+Web/awillingham-web-app/build
