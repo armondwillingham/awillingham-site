@@ -1,2 +1,4 @@
-obj/Debug/net5.0/awillingham-site.csprojAssemblyReference.cache
-obj/Debug/net5.0/awillingham-site.csprojAssemblyReference.cache
+*.cache
+obj/*
+bin/*
+Web/awillingham-web-app/node_modules
