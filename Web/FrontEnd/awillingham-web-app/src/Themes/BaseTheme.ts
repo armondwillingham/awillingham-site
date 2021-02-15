@@ -8,9 +8,12 @@ export interface Theme {
         secondary: string;
     };
     darkModeButtonColor: string;
+    fonts: {
+        rubik: string;
+    };
 }
 
-export const BaseTheme: Partial<Theme> = {
+export const BaseTheme = {
     backgroundColor: {
         primary: 'white',
         secondary: 'black',
@@ -18,5 +21,8 @@ export const BaseTheme: Partial<Theme> = {
     textColor: {
         primary: 'black',
         secondary: 'white',
+    },
+    fonts: {
+        rubik: "'Rubik', sans-serif;",
     },
 };

@@ -16,7 +16,7 @@ export const Header = (props: HeaderProps): JSX.Element => {
         <header className={styles.header}>
             <NavLink to={'/'} className={styles.navLink}>
                 <AWLogo />
-                <span>Home</span>
+                <span className={styles.home}>Home</span>
             </NavLink>
             <ToggleThemeButton toggleTheme={props.toggleTheme} />
         </header>
@@ -36,11 +36,18 @@ const useStyles = createUseStyles(
             top: 0,
             width: 'calc(100% - 2rem)',
             height: '3rem',
+            fontFamily: theme.fonts.rubik,
         },
         navLink: {
+            display: 'flex',
+            alignItems: 'center',
             textDecoration: 'none',
             color: theme.textColor.secondary,
-            fontSize: '18px',
+            fontSize: '1.5rem',
+            fontWeight: '500',
+        },
+        home: {
+            paddingLeft: '.5rem',
         },
     }),
 );

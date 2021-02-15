@@ -27,6 +27,7 @@ const useStyles = createUseStyles(
             backgroundColor: theme.backgroundColor.primary,
             color: theme.textColor.primary,
             marginTop: '3rem',
+            height: '100%',
         },
     }),
 );
