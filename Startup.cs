@@ -49,8 +49,11 @@ namespace awillingham_site
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    "Default",
+                    "{*url}",
+                    new { controller = "Home", action = "Index" });
+
+
             });
         }
     }

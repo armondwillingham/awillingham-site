@@ -1,14 +1,18 @@
 import React from 'react';
-import { createUseStyles } from 'react-jss';
+import { useTheme } from 'Hooks/useTheme';
+import { ThemeProvider } from 'react-jss';
+import { Routes } from 'Components/Pages/Routes';
+import { RouteList } from 'Components/Pages/RouteList';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 export const App = (): JSX.Element => {
-    const styles = useStyles();
+    const [theme, toggleTheme] = useTheme();
 
-    return <div className={styles.style}>New world!</div>;
+    return (
+        <ThemeProvider theme={theme}>
+            <Router>
+                <RouteList routes={Routes} toggleTheme={toggleTheme} />
+            </Router>
+        </ThemeProvider>
+    );
 };
-
-const useStyles = createUseStyles({
-    style: {
-        background: 'purple',
-    },
-});

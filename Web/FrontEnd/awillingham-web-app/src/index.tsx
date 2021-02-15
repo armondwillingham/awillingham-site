@@ -1,9 +1,9 @@
-import { App } from 'App';
 import React from 'react';
-import { render as reactRender } from 'react-dom';
+import { render } from 'react-dom';
+import { App } from 'App';
 
 export const InitApp = (): void => {
-    reactRender(<App />, document.getElementById('root'));
+    render(<App />, document.getElementById('root'));
 };
 
 (window as any).InitApp = InitApp;
