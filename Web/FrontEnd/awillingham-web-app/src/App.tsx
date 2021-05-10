@@ -5,7 +5,7 @@ import { Routes } from 'Components/Pages/Routes';
 import { RouteList } from 'Components/Pages/RouteList';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-export const App = (): JSX.Element => {
+export const App: React.FC = (): JSX.Element => {
     const [theme, toggleTheme] = useTheme();
 
     return (

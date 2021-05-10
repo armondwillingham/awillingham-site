@@ -2,7 +2,7 @@ import React from 'react';
 import { Styles, createUseStyles } from 'react-jss';
 import { Theme } from 'Themes/BaseTheme';
 
-export const Footer = (): JSX.Element => {
+export const Footer: React.FC = () => {
     const styles = useStyles();
 
     return <footer className={styles.footer}>Footer</footer>;

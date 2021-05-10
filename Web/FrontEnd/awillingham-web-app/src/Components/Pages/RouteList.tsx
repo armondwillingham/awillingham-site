@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Route, Switch } from 'react-router-dom';
 import { NotFound } from './404';
+import { BasePage } from './BasePage';
 import { RoutePair } from './Routes';
 
 interface RouteListProps {
@@ -9,10 +10,10 @@ interface RouteListProps {
     toggleTheme: () => void;
 }
 
-export const RouteList = ({ routes, toggleTheme }: RouteListProps): JSX.Element => {
+export const RouteList: React.FC<RouteListProps> = ({ routes, toggleTheme }: RouteListProps) => {
     const routeComponents: JSX.Element[] = routes.map((v, i) => (
         <Route exact path={v.route} key={i}>
-            {React.createElement<any>(v.component, { toggleTheme })}
+            <BasePage toggleTheme={toggleTheme}>{React.createElement<any>(v.component)}</BasePage>
         </Route>
     ));
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const AWLogo = (): JSX.Element => {
+export const AWLogo: React.FC = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="40px" height="40px">
             <style type="text/css">

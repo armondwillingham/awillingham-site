@@ -9,7 +9,7 @@ interface HeaderProps {
     toggleTheme: () => void;
 }
 
-export const Header = (props: HeaderProps): JSX.Element => {
+export const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     const styles = useStyles();
 
     return (
@@ -17,6 +17,9 @@ export const Header = (props: HeaderProps): JSX.Element => {
             <NavLink to={'/'} className={styles.navLink}>
                 <AWLogo />
                 <span className={styles.home}>Home</span>
+            </NavLink>
+            <NavLink to={'/gallery'} className={styles.navLink}>
+                <span className={styles.home}>Gallery</span>
             </NavLink>
             <ToggleThemeButton toggleTheme={props.toggleTheme} />
         </header>
@@ -45,6 +48,7 @@ const useStyles = createUseStyles(
             color: theme.textColor.secondary,
             fontSize: '1.5rem',
             fontWeight: '500',
+            paddingLeft: '1rem',
         },
         home: {
             paddingLeft: '.5rem',

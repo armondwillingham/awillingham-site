@@ -9,7 +9,7 @@ interface BasePageProps {
     children: React.ReactNode;
 }
 
-export const BasePage = (props: BasePageProps): JSX.Element => {
+export const BasePage: React.FC<BasePageProps> = (props: BasePageProps) => {
     const styles = useStyles();
 
     return (
