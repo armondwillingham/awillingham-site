@@ -3,3 +3,4 @@ obj/*
 bin/*
 Web/FrontEnd/awillingham-web-app/node_modules
 Web/FrontEnd/awillingham-web-app/build
+wwwroot/js/bundles/bundle.js

@@ -1,6 +1,6 @@
 import { WithToggleTheme } from 'Hooks/useTheme';
 import React from 'react';
-import { createUseStyles, Styles, useTheme } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { Theme } from 'Themes/BaseTheme';
 
 export const ToggleThemeButton = ({ toggleTheme }: WithToggleTheme<any>): JSX.Element => {

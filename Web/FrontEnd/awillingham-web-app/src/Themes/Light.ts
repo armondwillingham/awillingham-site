@@ -4,11 +4,11 @@ export const LightTheme: Theme = {
     ...BaseTheme,
     backgroundColor: {
         primary: '#e3e2df',
-        secondary: 'black',
+        secondary: '#000000',
     },
     textColor: {
-        primary: 'black',
-        secondary: 'white',
+        primary: '#000000',
+        secondary: '#ffffff',
     },
     darkModeButtonColor: '#9a9a9a',
 };

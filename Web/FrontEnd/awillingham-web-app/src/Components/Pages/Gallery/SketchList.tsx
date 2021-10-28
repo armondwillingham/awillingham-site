@@ -1,8 +1,14 @@
-import { Test, TestPreview } from 'Components/Sketches/Test';
+import { SketchPreviewProps } from 'Components/Sketches/SketchTypes';
+import { TestSketch, TestSketchPreview } from 'Components/Sketches/Test';
+import { TimesTablesPreview, TimesTablesSketchComponent } from 'Components/Sketches/TimesTables';
+import React from 'react';
 
 export interface SketchPair {
     name: string;
-    component: React.ComponentClass | React.FunctionComponent;
-    preview: React.ComponentClass | React.FunctionComponent;
+    component: React.ComponentType<SketchPreviewProps>;
+    preview: React.ComponentType<SketchPreviewProps>;
 }
-export const SketchList: SketchPair[] = [{ name: 'Test', component: Test, preview: TestPreview }];
+export const SketchList: SketchPair[] = [
+    { name: 'Test', component: TestSketch, preview: TestSketchPreview },
+    { name: 'TimesTables', component: TimesTablesSketchComponent, preview: TimesTablesPreview },
+];

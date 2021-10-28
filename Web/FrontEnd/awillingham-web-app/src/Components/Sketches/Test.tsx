@@ -1,29 +1,50 @@
-import React, { useCallback } from 'react';
-import Sketch from 'react-p5';
-import p5Types from 'p5'; //Import this for typechecking and intellisense
-import { Theme } from 'Themes/BaseTheme';
-import { useTheme } from 'react-jss';
+import P5 from 'p5';
+import React from 'react';
 
-export const Test: React.FC = () => {
-    const theme: Theme = useTheme();
-    let x = 50;
-    const y = 50;
-    console.log('render');
-    //See annotations in JS for more information
-    const setup = (p5: p5Types, canvasParentRef: Element) => {
-        p5.createCanvas(500, 500).parent(canvasParentRef);
+import { hexToRgb } from 'Utils/HexToRgb';
+import { SketchPreviewProps } from './SketchTypes';
+
+interface TestSketchState {
+    canvasRef: React.RefObject<HTMLDivElement>;
+    p5Instance: P5 | undefined;
+}
+export class TestSketch extends React.PureComponent<SketchPreviewProps, TestSketchState> {
+    constructor(props: SketchPreviewProps) {
+        super(props);
+        this.state = {
+            canvasRef: React.createRef(),
+            p5Instance: undefined,
+        };
+    }
+
+    componentDidMount(): void {
+        this.setState({
+            ...this.state,
+            p5Instance: new P5(this.sketch, this.state.canvasRef.current),
+        });
+    }
+
+    sketch = (p5: P5): void => {
+        const W = this.props.width;
+        const H = this.props.height;
+        let x = 0;
+        p5.setup = (): void => {
+            p5.createCanvas(W, H);
+        };
+
+        p5.draw = (): void => {
+            const backgroundColor = hexToRgb(this.props.theme.backgroundColor.primary);
+            p5.background(backgroundColor.r, backgroundColor.g, backgroundColor.b);
+            p5.fill(255);
+            p5.circle((x += 0.01), 10, 10);
+        };
     };
 
-    const draw = useCallback(
-        (p5: p5Types) => {
-            p5.background(theme.backgroundColor.primary);
-            p5.ellipse(x, y, 70, 70);
-            x++;
-        },
-        [theme],
-    );
+    render(): JSX.Element {
+        return <div ref={this.state.canvasRef} />;
+    }
+}
 
-    return <MemoSketch setup={setup} draw={draw} />;
+export const TestSketchPreview = (props: SketchPreviewProps): JSX.Element => {
+    return <TestSketch {...props} />;
 };
-const MemoSketch = React.memo(Sketch, () => true);
-export const TestPreview = Test;

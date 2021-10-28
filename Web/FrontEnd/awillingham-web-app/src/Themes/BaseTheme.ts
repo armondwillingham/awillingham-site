@@ -15,12 +15,12 @@ export interface Theme {
 
 export const BaseTheme = {
     backgroundColor: {
-        primary: 'white',
-        secondary: 'black',
+        primary: '#ffffff',
+        secondary: '#000000',
     },
     textColor: {
-        primary: 'black',
-        secondary: 'white',
+        primary: '#000000',
+        secondary: '#ffffff',
     },
     fonts: {
         rubik: "'Rubik', sans-serif;",
