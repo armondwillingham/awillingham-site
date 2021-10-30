@@ -22,6 +22,8 @@ const useStyles = createUseStyles(
     (theme: Theme): Styles => ({
         container: {
             display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-evenly',
         },
         content: {
             margin: '1rem',
