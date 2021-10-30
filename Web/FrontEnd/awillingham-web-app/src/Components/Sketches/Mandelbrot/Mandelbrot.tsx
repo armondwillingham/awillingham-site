@@ -48,11 +48,11 @@ class Complex {
     }
 }
 
-interface MandlebrotSketchProps extends SketchPreviewProps {
+interface MandelbrotSketchProps extends SketchPreviewProps {
     zoom: number;
 }
-export class MandlebrotSketch extends React.PureComponent<MandlebrotSketchProps, TestSketchState> {
-    constructor(props: MandlebrotSketchProps) {
+export class MandelbrotSketch extends React.PureComponent<MandelbrotSketchProps, TestSketchState> {
+    constructor(props: MandelbrotSketchProps) {
         super(props);
         this.state = {
             canvasRef: React.createRef(),
@@ -88,8 +88,8 @@ export class MandlebrotSketch extends React.PureComponent<MandlebrotSketchProps,
                 for (let j = 0; j < H; ++j) {
                     const x = p5.map(i + translateX * zoom, 0, W, -2 / zoom, 1 / zoom);
                     const y = p5.map(j + translateY * zoom, 0, H, -1.5 / zoom, 1.5 / zoom);
-                    const mandlebrot = this.calculateMandlebrot(x, y);
-                    const color = p5.map(mandlebrot, 1, MAX_ITER * zoom, 0, 255);
+                    const mandelbrot = this.calculateMandelbrot(x, y);
+                    const color = p5.map(mandelbrot, 1, MAX_ITER * zoom, 0, 255);
                     p5.set(i, j, p5.color(color, 100, 100));
                 }
             }
@@ -136,7 +136,7 @@ export class MandlebrotSketch extends React.PureComponent<MandlebrotSketchProps,
         };
     };
 
-    calculateMandlebrot(x: number, y: number): number {
+    calculateMandelbrot(x: number, y: number): number {
         const z = new Complex(0, 0);
         let n = 0;
         while (z.abs() <= 2 && n < MAX_ITER * this.props.zoom) {
@@ -151,7 +151,7 @@ export class MandlebrotSketch extends React.PureComponent<MandlebrotSketchProps,
     }
 }
 
-export const MandlebrotSketchComponent = (props: SketchPreviewProps): JSX.Element => {
+export const MandelbrotSketchComponent = (props: SketchPreviewProps): JSX.Element => {
     const styles = useStyles();
     const [zoom, setZoom] = useState(1);
     const [deltaZoom, setDeltaZoom] = useState(0);
@@ -174,7 +174,7 @@ export const MandlebrotSketchComponent = (props: SketchPreviewProps): JSX.Elemen
 
     return (
         <div>
-            <MandlebrotSketch {...props} width={size} height={size} zoom={zoom} />
+            <MandelbrotSketch {...props} width={size} height={size} zoom={zoom} />
             <button
                 onMouseDown={() => startZoom(0.25)}
                 onTouchStart={() => startZoom(0.25)}
@@ -198,8 +198,8 @@ export const MandlebrotSketchComponent = (props: SketchPreviewProps): JSX.Elemen
     );
 };
 
-export const MandlebrotPreview = (props: SketchPreviewProps): JSX.Element => {
-    return <MandlebrotSketch {...props} zoom={1} />;
+export const MandelbrotPreview = (props: SketchPreviewProps): JSX.Element => {
+    return <MandelbrotSketch {...props} zoom={1} />;
 };
 
 const useStyles = createUseStyles(

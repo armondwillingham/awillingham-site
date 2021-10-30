@@ -1,4 +1,4 @@
-import { MandlebrotPreview, MandlebrotSketchComponent } from 'Components/Sketches/Mandlebrot/Mandlebrot';
+import { MandelbrotPreview, MandelbrotSketchComponent } from 'Components/Sketches/Mandelbrot/Mandelbrot';
 import { SketchPreviewProps } from 'Components/Sketches/SketchTypes';
 import { TestSketch, TestSketchPreview } from 'Components/Sketches/Test';
 import { TimesTablesPreview, TimesTablesSketchComponent } from 'Components/Sketches/TimesTables/TimesTables';
@@ -12,5 +12,5 @@ export interface SketchPair {
 export const SketchList: SketchPair[] = [
     { name: 'Test', component: TestSketch, preview: TestSketchPreview },
     { name: 'TimesTables', component: TimesTablesSketchComponent, preview: TimesTablesPreview },
-    { name: 'Mandlebrot', component: MandlebrotSketchComponent, preview: MandlebrotPreview },
+    { name: 'Mandelbrot', component: MandelbrotSketchComponent, preview: MandelbrotPreview },
 ];
