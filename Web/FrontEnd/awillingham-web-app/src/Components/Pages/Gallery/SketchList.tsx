@@ -1,6 +1,6 @@
 import { SketchPreviewProps } from 'Components/Sketches/SketchTypes';
 import { TestSketch, TestSketchPreview } from 'Components/Sketches/Test';
-import { TimesTablesPreview, TimesTablesSketchComponent } from 'Components/Sketches/TimesTables';
+import { TimesTablesPreview, TimesTablesSketchComponent } from 'Components/Sketches/TimesTables/TimesTables';
 import React from 'react';
 
 export interface SketchPair {
