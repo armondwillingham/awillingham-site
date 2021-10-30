@@ -8,7 +8,7 @@ export interface RoutePair {
 }
 
 export const Routes: RoutePair[] = [
-    { route: '/', component: HomePage },
+    { route: '/', component: Gallery },
     { route: '/gallery', component: Gallery },
     ...SketchList.map((sketch): RoutePair => {
         return { route: `/${sketch.name}`, component: getSketchWrapper(sketch.component) };

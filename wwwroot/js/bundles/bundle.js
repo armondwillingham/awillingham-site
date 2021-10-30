@@ -687,17 +687,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/Components/Pages/Home.tsx":
-/*!***************************************!*\
-  !*** ./src/Components/Pages/Home.tsx ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"HomePage\": () => (/* binding */ HomePage)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar HomePage = function () {\n    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);\n};\n\n\n//# sourceURL=webpack://awillingham-web-app/./src/Components/Pages/Home.tsx?");
-
-/***/ }),
-
 /***/ "./src/Components/Pages/RouteList.tsx":
 /*!********************************************!*\
   !*** ./src/Components/Pages/RouteList.tsx ***!
@@ -716,7 +705,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Routes\": () => (/* binding */ Routes)\n/* harmony export */ });\n/* harmony import */ var _Gallery_Gallery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Gallery/Gallery */ \"./src/Components/Pages/Gallery/Gallery.tsx\");\n/* harmony import */ var _Gallery_SketchList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Gallery/SketchList */ \"./src/Components/Pages/Gallery/SketchList.tsx\");\n/* harmony import */ var _Gallery_SketchWrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Gallery/SketchWrapper */ \"./src/Components/Pages/Gallery/SketchWrapper.tsx\");\n/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Home */ \"./src/Components/Pages/Home.tsx\");\nvar __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {\n    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {\n        if (ar || !(i in from)) {\n            if (!ar) ar = Array.prototype.slice.call(from, 0, i);\n            ar[i] = from[i];\n        }\n    }\n    return to.concat(ar || Array.prototype.slice.call(from));\n};\n\n\n\n\nvar Routes = __spreadArray([\n    { route: '/', component: _Home__WEBPACK_IMPORTED_MODULE_3__.HomePage },\n    { route: '/gallery', component: _Gallery_Gallery__WEBPACK_IMPORTED_MODULE_0__.Gallery }\n], _Gallery_SketchList__WEBPACK_IMPORTED_MODULE_1__.SketchList.map(function (sketch) {\n    return { route: \"/\" + sketch.name, component: (0,_Gallery_SketchWrapper__WEBPACK_IMPORTED_MODULE_2__.getSketchWrapper)(sketch.component) };\n}), true);\n\n\n//# sourceURL=webpack://awillingham-web-app/./src/Components/Pages/Routes.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Routes\": () => (/* binding */ Routes)\n/* harmony export */ });\n/* harmony import */ var _Gallery_Gallery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Gallery/Gallery */ \"./src/Components/Pages/Gallery/Gallery.tsx\");\n/* harmony import */ var _Gallery_SketchList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Gallery/SketchList */ \"./src/Components/Pages/Gallery/SketchList.tsx\");\n/* harmony import */ var _Gallery_SketchWrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Gallery/SketchWrapper */ \"./src/Components/Pages/Gallery/SketchWrapper.tsx\");\nvar __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {\n    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {\n        if (ar || !(i in from)) {\n            if (!ar) ar = Array.prototype.slice.call(from, 0, i);\n            ar[i] = from[i];\n        }\n    }\n    return to.concat(ar || Array.prototype.slice.call(from));\n};\n\n\n\nvar Routes = __spreadArray([\n    { route: '/', component: _Gallery_Gallery__WEBPACK_IMPORTED_MODULE_0__.Gallery },\n    { route: '/gallery', component: _Gallery_Gallery__WEBPACK_IMPORTED_MODULE_0__.Gallery }\n], _Gallery_SketchList__WEBPACK_IMPORTED_MODULE_1__.SketchList.map(function (sketch) {\n    return { route: \"/\" + sketch.name, component: (0,_Gallery_SketchWrapper__WEBPACK_IMPORTED_MODULE_2__.getSketchWrapper)(sketch.component) };\n}), true);\n\n\n//# sourceURL=webpack://awillingham-web-app/./src/Components/Pages/Routes.ts?");
 
 /***/ }),
 
