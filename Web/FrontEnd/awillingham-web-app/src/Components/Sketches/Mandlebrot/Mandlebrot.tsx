@@ -1,5 +1,8 @@
+import { Styles } from 'jss';
 import P5 from 'p5';
 import React, { useCallback, useEffect, useState } from 'react';
+import { createUseStyles } from 'react-jss';
+import { Theme } from 'Themes/BaseTheme';
 
 import { hexToRgb } from 'Utils/HexToRgb';
 import { SketchPreviewProps } from '../SketchTypes';
@@ -93,24 +96,43 @@ export class MandlebrotSketch extends React.PureComponent<MandlebrotSketchProps,
             p5.updatePixels();
         };
 
-        p5.mousePressed = (e: any): void => {
-            if (e.clientX < 0 || e.clientX > W || e.clientY < 0 || e.clientY > H) {
+        p5.touchStarted = (e: any): void => {
+            let touchX = 0,
+                touchY = 0;
+            if (e.clientX && e.clientY) {
+                touchX = e.clientX;
+                touchY = e.clientY;
+            } else if (e.touches[0].clientX && e.touches[0].clientY) {
+                touchX = e.touches[0].clientX;
+                touchY = e.touches[0].clientY;
+            }
+            if (touchX < 0 || touchX > W || touchY < 0 || touchY > H) {
                 return;
             }
-            prevMouseX = e.clientX;
-            prevMouseY = e.clientY;
+            prevMouseX = touchX;
+            prevMouseY = touchY;
         };
 
-        p5.mouseDragged = (e: any): void => {
-            if (e.clientX < 0 || e.clientX > W || e.clientY < 0 || e.clientY > H) {
+        p5.touchMoved = (e: any): any => {
+            let touchX = 0,
+                touchY = 0;
+            if (e.clientX && e.clientY) {
+                touchX = e.clientX;
+                touchY = e.clientY;
+            } else if (e.touches[0].clientX && e.touches[0].clientY) {
+                touchX = e.touches[0].clientX;
+                touchY = e.touches[0].clientY;
+            }
+            if (touchX < 0 || touchX > W || touchY < 0 || touchY > H) {
                 return;
             }
-            const dx = (prevMouseX - e.clientX) / this.props.zoom;
-            const dy = (prevMouseY - e.clientY) / this.props.zoom;
+            const dx = (prevMouseX - touchX) / this.props.zoom;
+            const dy = (prevMouseY - touchY) / this.props.zoom;
             translateX += dx;
             translateY += dy;
-            prevMouseX = e.clientX;
-            prevMouseY = e.clientY;
+            prevMouseX = touchX;
+            prevMouseY = touchY;
+            return false;
         };
     };
 
@@ -130,11 +152,11 @@ export class MandlebrotSketch extends React.PureComponent<MandlebrotSketchProps,
 }
 
 export const MandlebrotSketchComponent = (props: SketchPreviewProps): JSX.Element => {
+    const styles = useStyles();
     const [zoom, setZoom] = useState(1);
     const [deltaZoom, setDeltaZoom] = useState(0);
     const [isZooming, setIsZooming] = useState(false);
-    const W = 500;
-    const H = 500;
+    const size = Math.min(Math.min(window.innerWidth, window.innerHeight), 500);
 
     const startZoom = useCallback((amt: number) => {
         setIsZooming(true);
@@ -152,11 +174,23 @@ export const MandlebrotSketchComponent = (props: SketchPreviewProps): JSX.Elemen
 
     return (
         <div>
-            <MandlebrotSketch {...props} width={W} height={H} zoom={zoom} />
-            <button onMouseDown={() => startZoom(0.25)} onMouseUp={() => stopZoom()}>
+            <MandlebrotSketch {...props} width={size} height={size} zoom={zoom} />
+            <button
+                onMouseDown={() => startZoom(0.25)}
+                onTouchStart={() => startZoom(0.25)}
+                onMouseUp={() => stopZoom()}
+                onTouchEnd={() => stopZoom()}
+                className={styles.unselectable}
+            >
                 Zoom in
             </button>
-            <button onMouseDown={() => startZoom(-0.25)} onMouseUp={() => stopZoom()}>
+            <button
+                onMouseDown={() => startZoom(-0.25)}
+                onTouchStart={() => startZoom(-0.25)}
+                onMouseUp={() => stopZoom()}
+                onTouchEnd={() => stopZoom()}
+                className={styles.unselectable}
+            >
                 Zoom out
             </button>
             <div>Zoom: {zoom}</div>
@@ -167,3 +201,14 @@ export const MandlebrotSketchComponent = (props: SketchPreviewProps): JSX.Elemen
 export const MandlebrotPreview = (props: SketchPreviewProps): JSX.Element => {
     return <MandlebrotSketch {...props} zoom={1} />;
 };
+
+const useStyles = createUseStyles(
+    (theme: Theme): Styles => ({
+        unselectable: {
+            '-webkit-user-select': 'none',
+            '-moz-user-select': 'none',
+            '-ms-user-select': 'none',
+            userSelect: 'none',
+        },
+    }),
+);
