@@ -67,7 +67,7 @@ const getDefaultTimesTables = (width: number, height: number): TimesTableInstanc
     const basicTimesTable2: TimesTableInstance = {
         position: pos2,
         size: size,
-        resolution: 1000,
+        resolution: 100,
         factor: 0.01,
         name: 'Right',
     };
