@@ -16,7 +16,7 @@ export const BasePage: React.FC<BasePageProps> = (props: BasePageProps) => {
         <>
             <Header toggleTheme={props.toggleTheme} />
             <div className={styles.container}>{props.children}</div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 };

@@ -1,3 +1,4 @@
+import { EcosystemSketchComponent, EcosystemSketchPreview } from 'Components/Sketches/Ecosystem/Ecosystem';
 import { MandelbrotPreview, MandelbrotSketchComponent } from 'Components/Sketches/Mandelbrot/Mandelbrot';
 import { SketchPreviewProps } from 'Components/Sketches/SketchTypes';
 import { TestSketch, TestSketchPreview } from 'Components/Sketches/Test';
@@ -13,4 +14,5 @@ export const SketchList: SketchPair[] = [
     { name: 'Test', component: TestSketch, preview: TestSketchPreview },
     { name: 'TimesTables', component: TimesTablesSketchComponent, preview: TimesTablesPreview },
     { name: 'Mandelbrot', component: MandelbrotSketchComponent, preview: MandelbrotPreview },
+    { name: 'Ecosystem', component: EcosystemSketchComponent, preview: EcosystemSketchPreview },
 ];

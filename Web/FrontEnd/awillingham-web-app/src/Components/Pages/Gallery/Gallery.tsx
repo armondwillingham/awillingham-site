@@ -10,9 +10,12 @@ export const Gallery: React.FC = () => {
     const styles = useStyles();
 
     const galleryComponents: JSX.Element[] = SketchList.map((sketch, i) => (
-        <NavLink to={sketch.name} key={i} className={styles.content}>
-            {React.createElement<SketchPreviewProps>(sketch.preview, { theme: theme, width: 100, height: 100 })}
-        </NavLink>
+        <div className={styles.contentContainer} key={i}>
+            <div className={styles.sketchTitle}>{sketch.name}</div>
+            <NavLink to={sketch.name} className={styles.content}>
+                {React.createElement<SketchPreviewProps>(sketch.preview, { theme: theme, width: 100, height: 100 })}
+            </NavLink>
+        </div>
     ));
 
     return <div className={styles.container}>{galleryComponents}</div>;
@@ -28,6 +31,11 @@ const useStyles = createUseStyles(
         content: {
             margin: '1rem',
             border: `1px ${theme.textColor.primary} solid`,
+        },
+        contentContainer: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
         },
     }),
 );
