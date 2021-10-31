@@ -135,8 +135,9 @@ export class EcosystemSketch extends React.PureComponent<SketchPreviewProps, Eco
             for (let i = 0; i < 100; ++i) {
                 particles.push(new Particle(Math.random() * W, Math.random() * H, W, H));
             }
-
-            for (let i = 0; i < 10; ++i) {
+            console.log((W * H) / 100000);
+            for (let i = 0; i < (W * H) / 150000; ++i) {
+                console.log('new food');
                 food.push({ x: Math.random() * W, y: Math.random() * H, rad: 15 });
             }
         };
