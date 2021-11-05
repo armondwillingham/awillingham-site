@@ -15,14 +15,10 @@ namespace awillingham_site.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             _logger.LogRequest("GET Index", Request);
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
             return View();
         }
 
