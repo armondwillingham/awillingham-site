@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using awillingham_site.Models;
+using awillingham_site.Extensions;
 
 namespace awillingham_site.Controllers
 {
@@ -20,6 +17,7 @@ namespace awillingham_site.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogRequest("GET Index", Request);
             return View();
         }
 
