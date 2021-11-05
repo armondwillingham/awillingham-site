@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 namespace awillingham_site
 {
@@ -17,6 +18,12 @@ namespace awillingham_site
                 {
                     logging.ClearProviders();
                     logging.AddConsole();
+                })
+                .ConfigureAppConfiguration((hostContext, builder) => {
+                    var env = hostContext.HostingEnvironment;
+                    builder.SetBasePath(env.ContentRootPath)
+                    .AddJsonFile("./_config/config.json", optional: false)
+                    .AddJsonFile("../config.json", optional: true);
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

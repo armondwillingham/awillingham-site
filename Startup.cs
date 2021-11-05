@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using awillingham_site.Config;
 
 namespace awillingham_site
 {
@@ -17,7 +18,8 @@ namespace awillingham_site
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {   
+            services.Configure<AppOptions>(Configuration);
             services.AddControllersWithViews();
         }
 
