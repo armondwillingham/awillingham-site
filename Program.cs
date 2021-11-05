@@ -23,7 +23,7 @@ namespace awillingham_site
                     var env = hostContext.HostingEnvironment;
                     builder.SetBasePath(env.ContentRootPath)
                     .AddJsonFile("./_config/config.json", optional: false)
-                    .AddJsonFile("../config.json", optional: true);
+                    .AddJsonFile("./_config/local.config.json", optional: true);
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
