@@ -17,6 +17,4 @@ export const SketchList: SketchPair[] = [
     { name: 'TimesTables', component: TimesTablesSketchComponent, preview: TimesTablesPreview },
     { name: 'Mandelbrot', component: MandelbrotSketchComponent, preview: MandelbrotPreview },
     { name: 'Ecosystem', component: EcosystemSketchComponent, preview: EcosystemSketchPreview },
-    { name: 'Snowflake', component: SnowflakeSketchComponent, preview: SnowflakeSketchPreview },
-    { name: 'Christmas', component: ChristmasSketchComponent, preview: ChristmasSketchPreview },
 ];
