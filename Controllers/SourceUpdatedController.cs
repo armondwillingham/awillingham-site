@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Primitives;
 using awillingham_site.Models;
 using awillingham_site.Extensions;
 using awillingham_site.Config;
@@ -34,8 +35,15 @@ namespace awillingham_site.Controllers
         {   
             var streamReader = new StreamReader(Request.Body);
             var body = await streamReader.ReadToEndAsync();
-            var hash = GetHash(body, _appOptionsMonitor.CurrentValue.GithubSecret);
-            _logger.LogRequest(hash, Request);
+            var hash = "sha256=" + GetHash(body, _appOptionsMonitor.CurrentValue.GithubSecret);
+            StringValues recievedHash;
+            Request.Headers.TryGetValue("X-Hub-Signature-256", out recievedHash);
+
+            if(recievedHash != hash) {
+                return BadRequest();
+            }
+            
+            _logger.LogRequest(recievedHash, Request);
             
             return Ok();
         }
