@@ -1,3 +1,4 @@
+using System.Threading;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -42,9 +43,29 @@ namespace awillingham_site.Controllers
             if(recievedHash != hash) {
                 return BadRequest();
             }
+
+            _logger.LogRequest("Recieved github webhook, restarting...", Request);
             
-            _logger.LogRequest(recievedHash, Request);
-            
+            Process process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "bash",
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false
+                }
+            };
+
+            Thread t = new Thread(async () =>
+                {
+                    Thread.Sleep(1000);
+                    process.Start();
+                    await process.StandardInput.WriteLineAsync("sudo systemctl restart awillingham-site");
+                });
+            t.Start();
+                    
             return Ok();
         }
 
