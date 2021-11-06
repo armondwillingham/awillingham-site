@@ -10,6 +10,7 @@ using awillingham_site.Models;
 using awillingham_site.Extensions;
 using awillingham_site.Config;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace awillingham_site.Controllers
 {
@@ -29,10 +30,10 @@ namespace awillingham_site.Controllers
 
         [HttpPost]
         [Route("sourceupdated")]
-        public IActionResult SourceUpdated()
+        public async Task<IActionResult> SourceUpdated()
         {   
             var streamReader = new StreamReader(Request.Body);
-            var body = streamReader.ReadToEnd();
+            var body = await streamReader.ReadToEndAsync();
             var hash = GetHash(body, _appOptionsMonitor.CurrentValue.GithubSecret);
             _logger.LogRequest(hash, Request);
             
